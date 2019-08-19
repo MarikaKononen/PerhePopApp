@@ -1,0 +1,64 @@
+<% include ../partials/header %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">Uusi paikka</div>
+    <form class="ui form" action="/paikat" method="POST">
+        <div class="field">
+            <label>Paikan nimi</label>
+            <input type="text" name="place[title]" placeholder="paikan nimi">
+        </div>
+        <div class="field">
+            <label>Kuva</label>
+            <input type="text" name="place[image]" placeholder="kuva">
+        </div>
+        <div class="field">
+            <label>Hinta</label>
+            <input type="radio" name="place[price]" value="ilmainen"> ilmainen
+            <input type="radio" name="place[price]" value="maksullinen"> maksullinen 
+        </div>
+        <div class="field">
+            <label>Ikähaitari</label>
+            <input type="checkbox" name="place[age]" value="alle kouluikäinen"> Alle kouluikäinen
+            <input type="checkbox" name="place[age]" value="kouluikäinen"> Kouluikäinen
+            <input type="checkbox" name="place[age]" value="nuoriso"> Nuoriso
+            <input type="checkbox" name="place[age]" value="kaikki"> Kaikki
+        </div>
+        <div class="field">
+            <label>Kaupunki</label>
+            <input type="text" name="place[city]" placeholder="kaupunki">
+        </div>
+        <div class="field">
+            <label>Osoite</label>
+            <input type="text" name="place[address]" placeholder="osoite">
+        </div>
+        <div class="field">
+            <label>Kategoria</label>
+            <select name="place[category]" >
+                <option value="">Valitse kategoria</option> 
+                <option value="leikkipuisto">Leikkipuisto</option>
+                <option value="uimaranta">Uimaranta</option>
+                <option value="kulttuuri">Kulttuuri</option>
+                <option value="puisto">Puisto</option>
+                <option value="sisäaktiviteetti">Sisäaktiviteetti</option>
+                <option value="ulkoaktiviteetti">Ulkoaktiviteetti</option>
+                <option value="eläimet">Eläimet</option>
+                <option value="tapahtuma">Tapahtuma</option>
+                <option value="muu">Muu</option>
+            </select>
+        </div>      
+        <div class="field">
+            <label>Maa</label>
+            <input type="text" name="place[country]" placeholder="maa">
+        </div>
+        <div class="field">
+            <label>Kuvaus</label>
+            <textarea name="place[description]" ></textarea> 
+        </div>
+        <input type="submit" class="ui teal button large">
+    </form>
+
+</div>
+
+
+
+<% include ../partials/footer %>

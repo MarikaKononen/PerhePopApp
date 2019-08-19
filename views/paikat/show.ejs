@@ -1,0 +1,75 @@
+<% include ../partials/header %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">
+        <span id="showpage_category">
+            <i class="cube icon"></i>
+            <%= place.category %>
+        </span>
+        <span ><%= place.title %> </span>
+        
+    </div>
+    <div class="ui top attached">
+        <div class="item">
+            <img class="ui centered rounded image" src="<%= place.image %>">
+            <div class="content">
+                <div class="meta">
+                    <span>
+                        <i class="calendar alternate outline icon"></i>
+                        <%= place.published.toDateString() %>
+                    </span>
+                    <span>
+                        <i class="thumbtack icon"></i>
+                        <%= place.city %>, <%= place.country %>
+                    </span>
+                    <span>
+                        <i class="child icon"></i>
+                        <%= place.age %>
+                    </span>
+                </div>
+      
+            </div>
+        </div>  
+    </div>       
+    <div class="ui attached segment">
+            <p><%= place.description %></p>
+            <a class="ui teal basic button" href="/paikat/<%= place._id %>/muokkaa">Muokkaa</a>
+            <form id="delete" action="/paikat/<%= place._id %>?_method=DELETE" method="POST">
+                <button class="ui red basic button">Poista</button>
+            </form>
+    </div>        
+         
+            
+        
+        
+    <div class="ui bottom attached segment">
+        <div class="ui feed">
+            <a class="ui teal basic button right floated" href="/paikat/<%= place._id %>/kommentit/uusi">Lisää uusi kommentti</a>
+            <% place.comments.forEach(function(comment){ %>
+                <div class="event">
+                    <div class="content">
+                    <div class="summary">
+                        <a class="user"> 
+                        <%= comment.author   %>
+                        </a> lisäsi kommentin
+                        <div class="date">
+                        1 tunti sitten
+                        </div>
+                       
+                    </div>
+                    <p> <%= comment.text %> </p>
+                    <div class="meta">
+                        <a class="like">
+                        <i class="like icon"></i> 4
+                        </a>
+                    </div>
+                    </div>
+                </div>
+                <% }); %>
+        </div>    
+    </div>
+
+       
+</div>
+
+<% include ../partials/footer %>    

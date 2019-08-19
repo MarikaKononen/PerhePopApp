@@ -1,0 +1,44 @@
+<% include ./partials/header %>
+
+<div class="ui main text container segment">   
+    <div class="ui huge header">Parhaat ajanviettopaikat lapsiperheille</div> 
+    <div class="ui link cards">
+        <% places.forEach(function(place){ %>
+            <div class="card">
+                <div class="image">
+                    <img src="<%= place.image %>">
+                </div>
+                <div class="content">
+                    <div class="header"><%=place.title%></div>
+                    <div class="meta">
+                        <a> <%= place.category%> </a>
+                        <a> </a>
+                    </div>
+                    <div class="description">
+                        <p><%= place.description.substring(0, 50) %> ...</p>
+                    </div>
+                </div>
+                <div class="extra content">
+                    <span class="left floated">
+                        <i class="thumbtack icon"></i>
+                        <%= place.city %>
+                     </span>
+                    
+                    <span  class="right floated">
+                        <i class="child icon"></i>
+                        <%= place.age %>
+                    </span>
+                    </br>
+                    <span class="right floated">
+                        <i class="database icon"></i>
+                        <a href="/paikat/<%= place._id %>">Lue lisää</a>
+                    </span>
+                </div>
+                
+        
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<% include ./partials/footer %>
