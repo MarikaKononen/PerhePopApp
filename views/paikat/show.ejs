@@ -31,17 +31,15 @@
             </div>
         </div>  
     </div>       
-    <div class="ui attached segment">
+    <div class="ui attached">
             <p><%= place.description %></p>
+            <p><em><%= place.author.username %></em></p>
             <a class="ui teal basic button" href="/paikat/<%= place._id %>/muokkaa">Muokkaa</a>
             <form id="delete" action="/paikat/<%= place._id %>?_method=DELETE" method="POST">
                 <button class="ui red basic button">Poista</button>
             </form>
     </div>        
-         
-            
-        
-        
+    <hr>     
     <div class="ui bottom attached segment">
         <div class="ui feed">
             <a class="ui teal basic button right floated" href="/paikat/<%= place._id %>/kommentit/uusi">Lisää uusi kommentti</a>
@@ -50,7 +48,7 @@
                     <div class="content">
                     <div class="summary">
                         <a class="user"> 
-                        <%= comment.author   %>
+                        <%= comment.author.username   %>
                         </a> lisäsi kommentin
                         <div class="date">
                         1 tunti sitten

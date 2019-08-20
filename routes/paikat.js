@@ -14,12 +14,12 @@ router.get("/", function(req,res){
 });
 
 // NEW ROUTE
-router.get("/uusi", function(req, res){
+router.get("/uusi", isLoggedIn, function(req, res){
     res.render("paikat/uusi");
 });
 
 // CREATE ROUTE 
-router.post("/", function(req,res){
+router.post("/",isLoggedIn, function(req,res){
     Place.create(req.body.place, function(err, newPlace){
         if(err){
             res.render("paikat/uusi");
@@ -43,7 +43,7 @@ router.get("/:id", function(req, res){
 });
 
 // EDIT ROUTE
-router.get("/:id/muokkaa", function(req, res){
+router.get("/:id/muokkaa", isLoggedIn, function(req, res){
     Place.findById(req.params.id, function(err, foundPlace){
         if(err){
             res.redirect("/paikat");
@@ -55,7 +55,7 @@ router.get("/:id/muokkaa", function(req, res){
 });
 
 // UPDATE ROUTE
-router.put("/:id", function(req, res){
+router.put("/:id", isLoggedIn, function(req, res){
     Place.findByIdAndUpdate(req.params.id, req.body.place, function(err, updatePlace){
         if(err){
             res.redirect("/paikat");
@@ -66,7 +66,7 @@ router.put("/:id", function(req, res){
 });
 
 // DELETE ROUTE 
-router.delete("/:id", function(req, res){
+router.delete("/:id", isLoggedIn, function(req, res){
     //destroy blog
     Place.findByIdAndRemove(req.params.id, function(err){
         if(err){
@@ -76,5 +76,13 @@ router.delete("/:id", function(req, res){
         }
     });
 });
+
+// middleware
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/kirjaudu");
+}
 
 module.exports = router;

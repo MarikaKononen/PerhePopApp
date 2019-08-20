@@ -1,0 +1,18 @@
+<% include ./partials/header %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">Kirjaudu</div>
+    <form class="ui form" action="/kirjaudu" method="POST">
+        <div class="field">
+            <input type="text" name="username" placeholder="username">
+        </div>
+        <div class="field">
+            <input type="text" name="password" placeholder="password">
+        </div>
+        <div class="field">
+            <input class="ui teal basic button" type="submit" value="Kirjaudu">
+        </div>
+    </form>
+</div>
+
+<% include ./partials/footer %>

@@ -11,5 +11,12 @@
                 <div class="header item"><i class="cubes icon"></i>PerhePop - ilmoita parhaat ajanviettopaikkasi</div>
                 <a href="/" class="item">Etusivu</a>
                 <a href="/paikat/uusi" class="item">Uusi paikka</a>
+                <% if(!currentUser) {%>
+                    <a  class="item" href="/kirjaudu">Kirjaudu</a>
+                    <a  class="item" href="/rekisteroidy">Rekisteröidy</a>
+                <% } else {%>
+                    <a  class="item" href="#">Kirjatunut käyttäjänä: <%= currentUser.username %></a>
+                    <a  class="item" href="/logout">Kirjaudu ulos</a>
+                <% } %>
             </div>
         </div>
