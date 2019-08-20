@@ -4,6 +4,9 @@ body{
 h1,h2,h3,h4,h5,h6,p,li,div, button, a{
     font-family: 'Pangolin', cursive;
 }
+.ui.huge.header{
+    font-family: 'Pangolin', cursive;
+}
 
 div.ui.fixed.menu{
     background-color:  #ffff00;
@@ -17,12 +20,48 @@ div.ui.menu.item{
 i.cubes{
     font-size: 2em;
 }
-i.child{
+/* i.child{
     margin-left: 0.8em;
-}
+} */
 
 .container.main {
     margin-top: 7.0em;
+}
+
+div.meta{
+    color: #00b5ad;
+}
+
+div.meta.showpage{
+    padding: 15px;
+}
+
+div.meta i{
+    color: #008079;
+}
+div.ui.attached p{
+    padding: 10px 15px;
+}
+.ui.feed{
+    min-height: 100px;
+}
+#extra-placespage i{
+    color: #008079;
+}
+#extra-placespage {
+    color: #00b5ad;
+}
+
+#extra-placespage a{
+    color: #00b5ad;
+}
+
+#extra-placespage a:hover{
+    color: rgba(0,0,0,.4);
+}
+
+#show-img{
+    max-height: 500px;
 }
 
 #delete{
@@ -31,5 +70,18 @@ i.child{
 
 #showpage_category{
     font-family: 'Pangolin', cursive;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
+    color: rgba(0,0,0,.4);
+}
+#showpage_category i{
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+#showpage_category:hover{
+    color: rgba(0,0,0,.87);
+}
+
+.ui.cards>.card>.image>img{
+    height: 218px;
 }
