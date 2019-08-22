@@ -1,0 +1,16 @@
+<% include ../partials/header %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">Muokkaa kommenttia</div>
+        <form class="ui form" action="/paikat/<%= place_id %>/kommentit/<%= comment._id %>?_method=PUT" method="POST">
+            <h3 class="ui dividing header">place title pitäisi saada tähän</h3>
+            <div class="field">
+               <input type="text" name="comment[text]" value="<%= comment.text %>">
+            </div>
+            <button class="ui teal basic button" type="submit"><i class="save icon"></i>Tallenna</button>
+        </form>
+        <!-- <a href="/paikat/<%= place_id %>">Takaisin</a> -->
+</div>
+
+
+<% include ../partials/footer %>

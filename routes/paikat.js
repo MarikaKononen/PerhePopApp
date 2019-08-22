@@ -1,6 +1,7 @@
 var express = require("express");
 var router  = express.Router(); 
 var  Place  = require("../models/paikat");
+var middleware = require("../middleware");
 
 // INDEX ROUTE
 router.get("/", function(req,res){
@@ -14,13 +15,34 @@ router.get("/", function(req,res){
 });
 
 // NEW ROUTE
-router.get("/uusi", isLoggedIn, function(req, res){
+router.get("/uusi", middleware.isLoggedIn, function(req, res){
     res.render("paikat/uusi");
 });
 
+
 // CREATE ROUTE 
-router.post("/",isLoggedIn, function(req,res){
-    Place.create(req.body.place, function(err, newPlace){
+router.post("/", middleware.isLoggedIn, function(req,res){
+    //get data from form 
+    var title = req.body.title;
+    var image = req.body.image;
+    var description = req.body.description;
+    var category = req.body.category;
+    var country = req.body.country;
+    var city = req.body.city;
+    var address = req.body.address;
+    var age = req.body.age;
+    var price = req.body.price;
+    var author = {
+                id: req.user._id,
+                username: req.user.username
+        }
+    console.log("create route:  ", req.body);    
+    var newPlace = {title: title, image: image, description:description, 
+                    category:category, country: country, city:city, 
+                    address:address, age:age, price:price, author:author };
+
+    // Create a new place and save to DB                
+    Place.create(newPlace, function(err, newPlace){
         if(err){
             res.render("paikat/uusi");
             console.log("Uuden paikan luoti ei onnistunut: ", err);
@@ -43,7 +65,7 @@ router.get("/:id", function(req, res){
 });
 
 // EDIT ROUTE
-router.get("/:id/muokkaa", isLoggedIn, function(req, res){
+router.get("/:id/muokkaa", middleware.checkPlaceOwnership, function(req, res){
     Place.findById(req.params.id, function(err, foundPlace){
         if(err){
             res.redirect("/paikat");
@@ -55,7 +77,7 @@ router.get("/:id/muokkaa", isLoggedIn, function(req, res){
 });
 
 // UPDATE ROUTE
-router.put("/:id", isLoggedIn, function(req, res){
+router.put("/:id", middleware.checkPlaceOwnership, function(req, res){
     Place.findByIdAndUpdate(req.params.id, req.body.place, function(err, updatePlace){
         if(err){
             res.redirect("/paikat");
@@ -65,8 +87,8 @@ router.put("/:id", isLoggedIn, function(req, res){
     });
 });
 
-// DELETE ROUTE 
-router.delete("/:id", isLoggedIn, function(req, res){
+// DESTROY ROUTE 
+router.delete("/:id", middleware.checkPlaceOwnership, function(req, res){
     //destroy blog
     Place.findByIdAndRemove(req.params.id, function(err){
         if(err){
@@ -76,13 +98,5 @@ router.delete("/:id", isLoggedIn, function(req, res){
         }
     });
 });
-
-// middleware
-function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()){
-        return next();
-    }
-    res.redirect("/kirjaudu");
-}
 
 module.exports = router;

@@ -35,6 +35,9 @@ div.meta{
 div.meta.showpage{
     padding: 15px;
 }
+div.meta.showpage span{
+    padding: 0 5px;
+}
 
 div.meta i{
     color: #008079;
@@ -80,6 +83,10 @@ div.ui.attached p{
 
 #showpage_category:hover{
     color: rgba(0,0,0,.87);
+}
+
+.user.icon{
+    font-size: 1.05rem;
 }
 
 .ui.cards>.card>.image>img{

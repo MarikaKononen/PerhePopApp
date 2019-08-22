@@ -5,35 +5,35 @@
     <form class="ui form" action="/paikat" method="POST">
         <div class="field">
             <label>Paikan nimi</label>
-            <input type="text" name="place[title]" placeholder="paikan nimi">
+            <input type="text" name="title" placeholder="paikan nimi">
         </div>
         <div class="field">
             <label>Kuva</label>
-            <input type="text" name="place[image]" placeholder="kuva">
+            <input type="text" name="image" placeholder="kuva">
         </div>
         <div class="field">
             <label>Hinta</label>
-            <input type="radio" name="place[price]" value="ilmainen"> ilmainen
-            <input type="radio" name="place[price]" value="maksullinen"> maksullinen 
+            <input type="radio" name="price" value="ilmainen"> ilmainen
+            <input type="radio" name="price" value="maksullinen"> maksullinen 
         </div>
         <div class="field">
             <label>Ikähaitari</label>
-            <input type="checkbox" name="place[age]" value="alle kouluikäinen"> Alle kouluikäinen
-            <input type="checkbox" name="place[age]" value="kouluikäinen"> Kouluikäinen
-            <input type="checkbox" name="place[age]" value="nuoriso"> Nuoriso
-            <input type="checkbox" name="place[age]" value="kaikki"> Kaikki
+            <input type="checkbox" name="age" value="alle kouluikäinen"> Alle kouluikäinen
+            <input type="checkbox" name="age" value="kouluikäinen"> Kouluikäinen
+            <input type="checkbox" name="age" value="nuoriso"> Nuoriso
+            <input type="checkbox" name="age" value="kaikki"> Kaikki
         </div>
         <div class="field">
             <label>Kaupunki</label>
-            <input type="text" name="place[city]" placeholder="kaupunki">
+            <input type="text" name="city" placeholder="kaupunki">
         </div>
         <div class="field">
             <label>Osoite</label>
-            <input type="text" name="place[address]" placeholder="osoite">
+            <input type="text" name="address" placeholder="osoite">
         </div>
         <div class="field">
             <label>Kategoria</label>
-            <select name="place[category]" >
+            <select name="category" >
                 <option value="">Valitse kategoria</option> 
                 <option value="leikkipuisto">Leikkipuisto</option>
                 <option value="uimaranta">Uimaranta</option>
@@ -48,13 +48,13 @@
         </div>      
         <div class="field">
             <label>Maa</label>
-            <input type="text" name="place[country]" placeholder="maa">
+            <input type="text" name="country" placeholder="maa">
         </div>
         <div class="field">
             <label>Kuvaus</label>
-            <textarea name="place[description]" ></textarea> 
+            <textarea name="description" ></textarea> 
         </div>
-        <input type="submit" class="ui teal basic button" value="Tallenna" >
+        <input type="submit" class="ui teal basic button" value="Lähetä uusi paikka" >
     </form>
 
 </div>

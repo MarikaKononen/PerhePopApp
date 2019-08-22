@@ -27,6 +27,10 @@
                         <i class="child icon"></i>
                         <%= place.age %>
                     </span>
+                    <span>
+                        <i class="user icon"></i>
+                        <%= place.author.username %>
+                    </span>
                 </div>
       
             </div>
@@ -34,11 +38,13 @@
     </div>       
     <div class="ui attached">
             <p><%= place.description %></p>
-            <p><em><%= place.author.username %></em></p>
-            <a class="ui teal basic button" href="/paikat/<%= place._id %>/muokkaa">Muokkaa</a>
+         
+            <% if(currentUser && place.author.id.equals(currentUser._id)) { %>
+            <a class="ui teal basic button" href="/paikat/<%= place._id %>/muokkaa"><i class="pencil alternate icon"></i>Muokkaa</a>
             <form id="delete" action="/paikat/<%= place._id %>?_method=DELETE" method="POST">
-                <button class="ui red basic button">Poista</button>
+                <button class="ui red basic button"><i class="trash alternate icon"></i>Poista</button>
             </form>
+            <% } %>
     </div>        
     <hr>     
     <div class="ui bottom attached segment">
@@ -61,6 +67,13 @@
                         <a class="like">
                         <i class="like icon"></i> 4
                         </a>
+                        <a class="ui teal basic button" 
+                           href="/paikat/<%= place._id %>/kommentit/<%= comment._id  %>/muokkaa">
+                           <i class="pencil alternate icon"></i>Muokkaa
+                        </a>
+                        <form id="delete" action="/paikat/<%= place._id %>/kommentit/<%= comment._id  %>?_method=DELETE" method="POST">
+                            <input type="submit" class="ui red basic button" value="Poista">
+                        </form>
                     </div>
                     </div>
                 </div>
