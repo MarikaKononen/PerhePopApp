@@ -1,6 +1,7 @@
 var express        = require("express"),
     app            = express(),
     passport       = require("passport"),
+    flash          = require("connect-flash"),
     mongoose       = require("mongoose"),
     bodyParser     = require("body-parser"),
     methodOverride = require("method-override"),
@@ -15,14 +16,23 @@ var commentRoutes = require("./routes/kommentit"),
 
 
 // APP CONFIG
-mongoose.connect("mongodb://localhost/perhepop_app", { useNewUrlParser: true });
+var url = process.env.DATABASEURL || "mongodb://localhost/perhepop_app" 
+mongoose.connect(url, { 
+    useNewUrlParser: true, 
+    useCreateIndex: true
+}).then(() =>{
+    console.log("Connected to DB");
+}).catch(err => {
+    console.log("ERROR:", err.message);
+});
+
 mongoose.set('useFindAndModify', false);
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
-// seedDB(); // seeding data to database
-
 app.use(methodOverride("_method"));
+app.use(flash());
+// seedDB(); // seeding data to database
 
 
 //PASSPORT CONFIGURATION
@@ -38,8 +48,12 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+
+
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
     next();
 });
 
@@ -49,7 +63,8 @@ app.use("/paikat", placesRoutes);
 app.use("/paikat/:id/kommentit", commentRoutes);
 
 
+var port = process.env.PORT || 3000;
 
-app.listen(3000, function(){
+app.listen(port, function(){
     console.log("PerhePop App is started!");
 });    
