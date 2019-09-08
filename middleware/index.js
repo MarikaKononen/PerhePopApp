@@ -13,6 +13,11 @@ middlewareObj.checkPlaceOwnership = function(req, res, next){
             if(err){
                 res.redirect("/paikat");
             } else {
+                // Added this block, to check if foundPlace exists, and if it doesn't to throw an error via connect-flash and send us back to the homepage
+                if(!foundPlace){
+                    req.flash("error", "Paikkaa ei löytynyt.");
+                    return res.redirect("back");
+                }
                 //does user own the place?
                 // place.author.id => mongoose object
                 // req.user._id => string, comparing those needs equals
@@ -36,6 +41,11 @@ middlewareObj.checkCommentOwnership = function(req, res, next){
             if(err){
                 res.redirect("/paikat");
             } else {
+                // Added this block, to check if foundComment exists, and if it doesn't to throw an error via connect-flash and send us back to the homepage
+                if(!foundComment){
+                    req.flash("error", "Kommenttia ei löytynyt.");
+                    return res.redirect("back");
+                }
                 //does user own the comment?
                 // comment.author.id => mongoose object
                 // req.user._id => string, comparing those needs equals
@@ -58,6 +68,7 @@ middlewareObj.isLoggedIn = function(req, res, next){
     if(req.isAuthenticated()){
         return next();
     }
+    req.flash("error", "Sinun täytyy kirjautua.");
     res.redirect("/kirjaudu");
 }
 
