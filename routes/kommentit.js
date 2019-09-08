@@ -41,9 +41,11 @@ router.post("/", middleware.isLoggedIn, function(req, res){
                     place.save(function(err, comment){
                         if(err){
                             console.log("Didn't saved the comment", err);
+                            req.flash("error", "Pahoittelut, jokin meni vikaan ja kommenttia ei tallennettu.")
                             res.redirect("/paikat");
                         } else {
                             console.log("new comment saved");
+                            req.flash("success", "Kommentti tallennettu.");
                             res.redirect("/paikat/" + place._id);
                         }
                     });
@@ -82,6 +84,7 @@ router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, re
         if(err){
             res.redirect("back");
         } else {
+            req.flash("success", "Kommentti poistettu. ");
             res.redirect("/paikat/" + req.params.id)
         }
     });

@@ -63,18 +63,20 @@
                        
                     </div>
                     <p> <%= comment.text %> </p>
-                    <div class="meta">
-                        <a class="like">
-                        <i class="like icon"></i> 4
-                        </a>
-                        <a class="ui teal basic button" 
-                           href="/paikat/<%= place._id %>/kommentit/<%= comment._id  %>/muokkaa">
-                           <i class="pencil alternate icon"></i>Muokkaa
-                        </a>
-                        <form id="delete" action="/paikat/<%= place._id %>/kommentit/<%= comment._id  %>?_method=DELETE" method="POST">
-                            <input type="submit" class="ui red basic button" value="Poista">
-                        </form>
-                    </div>
+                    <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                        <div class="meta">
+                            <a class="like">
+                            <i class="like icon"></i> 4
+                            </a>
+                            <a class="ui teal basic button" 
+                            href="/paikat/<%= place._id %>/kommentit/<%= comment._id  %>/muokkaa">
+                            <i class="pencil alternate icon"></i>Muokkaa
+                            </a>
+                            <form id="delete" action="/paikat/<%= place._id %>/kommentit/<%= comment._id  %>?_method=DELETE" method="POST">
+                                <input type="submit" class="ui red basic button" value="Poista">
+                            </form> 
+                        </div>
+                    <% } %>
                     </div>
                 </div>
                 <% }); %>

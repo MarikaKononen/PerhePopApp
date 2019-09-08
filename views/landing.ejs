@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PerhePop</title>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+        <link rel="stylesheet" href="/stylesheets/landing.css">
+        <link href="https://fonts.googleapis.com/css?family=Pangolin&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
+    </head>
+    <body>
+    
+    <div class="container">
+            <% if(error && error.length > 0 ){ %>
+                <div class="alert alert-danger" role="alert">
+                    <h1><%= error %></h1>
+                </div>
+            <% } %>
+            <% if(success && success.length > 0 ){ %>
+                <div class="alert alert-success" role="alert">
+                    <h1><%= success %></h1>
+                </div>
+            <% } %>
+    </div>
+    
+    <div id="landing-header">
+        <div id="title-area">
+            <h1><i class="cubes icon"></i> PerhePop</h1> 
+            <h2>Tekemistä koko perheelle!</h2>
+            <a href="/paikat" class="ui inverted  button">Selaa ideoita</a>
+        </div>
+    </div>
+    
+    <ul class="slideshow">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+
+<% include partials/footer %>

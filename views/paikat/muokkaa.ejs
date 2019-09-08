@@ -70,58 +70,58 @@
                
                 <option value="">Valitse kategoria</option>
 
-                <% if(place.category == "leikkipuisto") { %>
-                    <option selected value="leikkipuisto">Leikkipuisto</option>
+                <% if(place.category === "Leikkipuisto") { %>
+                    <option selected>Leikkipuisto</option>
                 <%}  else {%>
-                    <option value="leikkipuisto">Leikkipuisto</option>
+                    <option>Leikkipuisto</option>
                 <% } %> 
                 
-                <% if(place.category == "uimaranta") { %>
-                    <option selected value="uimaranta">Uimaranta</option>
+                <% if(place.category === "Uimaranta") { %>
+                    <option selected >Uimaranta</option>
                 <%}  else {%>
-                    <option value="uimaranta">Uimaranta</option>
+                    <option>Uimaranta</option>
                 <% } %> 
                 
-                <% if(place.category == "kulttuuri") { %>
-                    <option selected value="kulttuuri">Kulttuuri</option>
+                <% if(place.category === "Kulttuuri") { %>
+                    <option selected>Kulttuuri</option>
                 <%}  else {%>
-                    <option value="kulttuuri">Kulttuuri</option>    
+                    <option>Kulttuuri</option>    
                 <% } %> 
                 
-                <% if(place.category == "puisto") { %>
-                    <option selected value="puisto">Puisto</option>
+                <% if(place.category === "Puisto") { %>
+                    <option selected>Puisto</option>
                 <%}  else {%>
-                    <option value="puisto">Puisto</option>
+                    <option>Puisto</option>
                 <% } %> 
                 
-                <% if(place.category == "sisäaktiviteetti") { %>
-                    <option selected value="sisäaktiviteetti">Sisäaktiviteetti</option>
+                <% if(place.category == "Sisäaktiviteetti") { %>
+                    <option selected>Sisäaktiviteetti</option>
                 <%}  else {%>
-                    <option value="sisäaktiviteetti">Sisäaktiviteetti</option>        
+                    <option>Sisäaktiviteetti</option>        
                 <% } %> 
                 
-                <% if(place.category == "ulkoaktiviteetti") { %>
-                    <option selected value="ulkoaktiviteetti">Ulkoaktiviteetti</option>
+                <% if(place.category === "Ulkoaktiviteetti") { %>
+                    <option selected>Ulkoaktiviteetti</option>
                 <%}  else {%>
-                    <option value="ulkoaktiviteetti">Ulkoaktiviteetti</option>
+                    <option>Ulkoaktiviteetti</option>
                 <% } %> 
                 
-                <% if(place.category == "eläimet") { %>
-                    <option selected value="eläimet">Eläimet</option>
+                <% if(place.category === "Eläimet") { %>
+                    <option selected>Eläimet</option>
                 <%}  else {%>
-                    <option value="eläimet">Eläimet</option>
+                    <option>Eläimet</option>
                 <% } %> 
                
-                <% if(place.category == "tapahtuma") { %>
-                    <option selected value="tapahtuma">Tapahtuma</option>
+                <% if(place.category ===  "Tapahtuma") { %>
+                    <option selected>Tapahtuma</option>
                 <%}  else {%>
-                    <option value="tapahtuma">Tapahtuma</option>
+                    <option>Tapahtuma</option>
                 <% } %> 
                 
-                <% if(place.category == "muu") { %>
-                    <option selected value="muu">Muu</option>
+                <% if(place.category === "Muu") { %>
+                    <option selected">Muu</option>
                 <%}  else {%>
-                    <option value="muu">Muu</option>
+                    <option>Muu</option>
                 <% } %> 
                 
             </select>

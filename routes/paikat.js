@@ -46,7 +46,9 @@ router.post("/", middleware.isLoggedIn, function(req,res){
         if(err){
             res.render("paikat/uusi");
             console.log("Uuden paikan luoti ei onnistunut: ", err);
+            req.flash("error", "Valitettavasti jokin meni pieleen ja uusi paikka ei tallentunut." )
         } else {
+            req.flash("succes", "Uusi paikka tallennettu.")
             res.redirect("/paikat");
         }
     });
@@ -81,7 +83,9 @@ router.put("/:id", middleware.checkPlaceOwnership, function(req, res){
     Place.findByIdAndUpdate(req.params.id, req.body.place, function(err, updatePlace){
         if(err){
             res.redirect("/paikat");
+            req.flash("error", err.message)
         } else {
+            req.flash("success", "Tiedot päivitetty.")
             res.redirect("/paikat/" + req.params.id);
         }
     });
@@ -93,7 +97,9 @@ router.delete("/:id", middleware.checkPlaceOwnership, function(req, res){
     Place.findByIdAndRemove(req.params.id, function(err){
         if(err){
             res.redirect("/paikat");
+            req.flash("error", err.message)
         } else {
+            req.flash("success", "Paikka poistettu.")
             res.redirect("/paikat");
         }
     });
